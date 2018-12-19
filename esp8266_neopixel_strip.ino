@@ -9,7 +9,6 @@
    * ESP8266 Wi-Fi Device
    * Arduino 1.8.8+ IDE
    * Additional Boards URL: http://arduino.esp8266.com/stable/package_esp8266com_index.json
-   * Library: esp8266 by ESP8266 Community
    * Library: ThingSpeak by MathWorks
    * Library: Adafruit NeoPixel by Adafruit
 
@@ -76,10 +75,10 @@ void loop() {
   int statusCode = 0;
 
   // Connect or reconnect to WiFi
-  if(WiFi.status() != WL_CONNECTED) {
+  if (WiFi.status() != WL_CONNECTED) {
     Serial.print("Attempting to connect to SSID: ");
     Serial.println(SECRET_SSID);
-    while(WiFi.status() != WL_CONNECTED) {
+    while (WiFi.status() != WL_CONNECTED) {
       WiFi.begin(ssid, pass); // Connect to WPA/WPA2 network. Change this line if using open or WEP network
       Serial.print(".");
       delay(5000);
@@ -93,7 +92,7 @@ void loop() {
   // Check the status of the read operation to see if it was successful
   statusCode = ThingSpeak.getLastReadStatus();
 
-  if(statusCode == 200) {
+  if (statusCode == 200) {
     Serial.println("Latest CheerLights Color: " + color);
     setColor(color);
   }
